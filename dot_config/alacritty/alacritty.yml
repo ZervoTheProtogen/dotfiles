@@ -1,0 +1,13 @@
+env:
+  TERM: xterm-256color
+
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+
+font:
+  size: 6.0
+  normal:
+    family: JetbrainsMono Nerd Font
+
+shell:
+  program: fish
