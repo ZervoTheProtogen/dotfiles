@@ -227,8 +227,8 @@ bindsym $mod+r mode "resize"
 bindsym $mod+p move workspace to output right
 
 # Lock screen
-bindsym --release $mod+Shift+s exec "slock"
+bindsym --release $mod+Shift+s exec --no-startup-id "slock"
 
 # Open screenshot tool
-bindsym Print exec "rofi-screenshot"
+bindsym Print exec --no-startup-id "rofi-screenshot"
 
