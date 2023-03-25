@@ -10,4 +10,4 @@ font:
     family: JetbrainsMono Nerd Font
 
 shell:
-  program: fish
+  program: bash
