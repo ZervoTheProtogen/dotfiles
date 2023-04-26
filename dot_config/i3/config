@@ -55,6 +55,9 @@ exec --no-startup-id autorandr --change --force
 # Start dunst (notification daemon)
 exec --no-startup-id dunst
 
+# Start flameshot
+exec --no-startup-id flameshot
+
 # Start polybar (status bar)
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
@@ -230,5 +233,5 @@ bindsym $mod+p move workspace to output right
 bindsym --release $mod+Shift+s exec --no-startup-id "slock"
 
 # Open screenshot tool
-bindsym Print exec --no-startup-id "rofi-screenshot"
+bindsym Print exec --no-startup-id "flameshot gui"
 
