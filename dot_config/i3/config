@@ -27,7 +27,7 @@ set $mantle    #181825
 set $crust     #11111b
 
 # target                 border      bg         text   indicator  child_border
-client.focused           $surface1   $surface1  $text  $surface1  $green
+client.focused           $surface1   $surface1  $text  $surface1  $blue
 client.focused_inactive  $surface0   $surface0  $text  $surface0  $surface0
 client.unfocused         $base       $base      $text  $base      $surface2
 client.urgent            $peach      $peach     $peach $red       $peach
