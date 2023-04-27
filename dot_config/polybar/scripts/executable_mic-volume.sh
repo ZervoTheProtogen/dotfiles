@@ -1,18 +1,18 @@
 #!/bin/sh
 
-DEFAULT_SOURCE_INDEX=$(pactl list-sources | grep "\* index:" | cut -d' ' -f5)
+DEFAULT_SOURCE_INDEX=$(pactl list sources short | grep "RUNNING" | grep "input" | awk '{print $1;}')
 
 display_volume() {
 	if [ -z "$volume" ]; then
 	  echo "No Mic Found"
 	else
 	  volume="${volume//[[:blank:]]/}" 
-	  if [[ "$mute" == *"yes"* ]]; then
-	    echo ""
-	  elif [[ "$mute" == *"no"* ]]; then
-	    echo "$volume"
+	  if [ "$mute" == "yes" ]; then
+	    echo "󰍭"
+	  elif [ "$mute" == "no" ]; then
+	    echo "󰍬 $volume"
 	  else
-	    echo "$volume !"
+	    echo "󰍬 $volume!"
 	  fi
 	fi
 }
@@ -20,27 +20,27 @@ display_volume() {
 case $1 in
 	"show-vol")
 		if [ -z "$2" ]; then
-  			volume=$(pactl list-sources | grep "index: $DEFAULT_SOURCE_INDEX" -A 7 | grep "volume" | awk -F/ '{print $2}')
-  			mute=$(pactl list-sources | grep "index: $DEFAULT_SOURCE_INDEX" -A 11 | grep "muted")
+  			volume=$(pactl list sources | grep "Source #$DEFAULT_SOURCE_INDEX" -A 9 | grep "Volume" | awk -F/ '{print $2}')
+  			mute=$(pactl list sources | grep "Source #$DEFAULT_SOURCE_INDEX" -A 8 | grep "Mute" | awk '{print $2}')
 			display_volume
 		else
-  			volume=$(pactl list-sources | grep "$2" -A 6 | grep "volume" | awk -F/ '{print $2}')
-  			mute=$(pactl list-sources | grep "$2" -A 11 | grep "muted" )
+  			volume=$(pactl list sources | grep "$2" -A 9 | grep "Volume" | awk -F/ '{print $2}')
+  			mute=$(pactl list sources | grep "$2" -A 8 | grep "Mute" | awk '{print $2}')
 			display_volume
 		fi
 		;;
 	"inc-vol")
 		if [ -z "$2" ]; then
-			pactl set-source-volume $DEFAULT_SOURCE_INDEX +7%
+			pactl set-source-volume $DEFAULT_SOURCE_INDEX +5%
 		else
-			pactl set-source-volume $2 +7%
+			pactl set-source-volume $2 +5%
 		fi
 		;;
 	"dec-vol")
 		if [ -z "$2" ]; then
-			pactl set-source-volume $DEFAULT_SOURCE_INDEX -7%
+			pactl set-source-volume $DEFAULT_SOURCE_INDEX -5%
 		else
-			pactl set-source-volume $2 -7%
+			pactl set-source-volume $2 -5%
 		fi
 		;;
 	"mute-vol")
