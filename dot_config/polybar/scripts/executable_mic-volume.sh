@@ -3,8 +3,14 @@
 DEFAULT_SOURCE_INDEX=$(pactl list sources short | grep "RUNNING" | grep "input" | awk '{print $1;}')
 
 display_volume() {
-	if [ -z "$volume" ]; then
-	  echo "No Mic Found"
+	if [ -z "$DEFAULT_SOURCE_INDEX" ]; then
+	  if [ -z "$volume" ]; then
+	    # if no volume was returned then no mic is available
+	    echo "󱦉 No Mic"
+	  else
+	  	# if source index is empty but volume has value then hide the module
+	    echo ""
+	  fi
 	else
 	  volume="${volume//[[:blank:]]/}" 
 	  if [ "$mute" == "yes" ]; then
