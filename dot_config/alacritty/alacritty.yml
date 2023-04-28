@@ -5,9 +5,9 @@ import:
   - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
 
 font:
-  size: 6.0
+  size: 9.0
   normal:
     family: JetbrainsMono Nerd Font
 
 shell:
-  program: bash
+  program: zsh
