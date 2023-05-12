@@ -13,5 +13,7 @@ else
 fi
 
 # Enable Touchpad Click-on-Tap
-xinput set-prop 9 "libinput Scroll Method Enabled" 1 0 0
+xinput set-prop 9 "libinput Scroll Method enabled" 1 0 0
+echo "enabled touchpad scrolling"
+xinput set-prop 9 "libinput Tapping Enabled" 1
 echo "enabled touchpad tapping"
