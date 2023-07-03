@@ -50,7 +50,7 @@ bindsym $mod+shift+d exec pkill -9 Discord && discord
 exec --no-startup-id picom
 
 # Start autorandr (screen management)
-exec --no-startup-id autorandr --change --force
+exec --no-startup-id autorandr triple-new --force
 
 # Start dunst (notification daemon)
 exec --no-startup-id dunst
@@ -63,6 +63,9 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Start feh (wallpaper)
 exec_always --no-startup-id feh --no-fehbg --bg-scale ~/.local/share/backgrounds/arch-black-4k.png &
+
+# Start polkit agent
+exec_always --no-startup-id /usr/bin/lxqt-policykit-agent
 
 # Run device-specific scripts (stuff to only be run on eg. the laptop)
 exec --no-startup-id ~/.config/devicespecific/laptop-startcommands.sh
@@ -87,6 +90,9 @@ bindsym XF86AudioPrev exec "playerctl --player=spotify,%any previous"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Start weston session
+bindsym $mod+F2 exec --no-startup-id weston
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
